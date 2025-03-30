@@ -7,4 +7,6 @@ public abstract class Entity {
         id ++;
     }
 
+    public abstract Entity copy();
+
 }
