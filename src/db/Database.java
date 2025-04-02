@@ -1,16 +1,34 @@
 package db;
 import dbexeption.EntityNotFoundException;
+import dbexeption.InvalidEntityException;
+import example.HumanValidator;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Database {
 
-
+    private static HashMap<Integer, Validator> validators = new HashMap<>();
     private static ArrayList<Entity> entities = new ArrayList<>();
 
-    public static void add(Entity e){
+    public static void add(Entity e) throws InvalidEntityException {
+
+        Validator validator = validators.get(e.getEntityCode());
+        validator.validate(e);
+
         e.id = entities.size() + 1;
         entities.add(e.clone());
+    }
+
+
+    public void getValidators(){
+
+        System.out.println("Validators code:");
+
+        for (int i : validators.keySet()) {
+            System.out.println(i);
+        }
     }
 
 
@@ -35,8 +53,12 @@ public class Database {
     }
 
 
-    public static void update(Entity e)throws EntityNotFoundException{
+    public static void update(Entity e) throws EntityNotFoundException, InvalidEntityException {
         int i = 0;
+
+        Validator validator = validators.get(e.getEntityCode());
+        validator.validate(e);
+
         for(Entity entity: entities){
             if(entity.id == e.id){
                 entities.set(i, e.clone());
@@ -47,6 +69,13 @@ public class Database {
         throw new EntityNotFoundException();
     }
 
+    public static void registerValidator(int entityCode, Validator validator) {
 
+        if(validators.get(entityCode) != null){
+            throw new IllegalArgumentException("the entity code already exist");
+        }
+
+        validators.put(entityCode, validator);
+    }
 
 }
