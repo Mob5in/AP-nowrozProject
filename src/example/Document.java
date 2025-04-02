@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Document extends Entity implements Trackable {
 
-
+    public static final int DOCUMENT_ENTITY_CODE = 0;
     private Date creationDate = new Date();
     public String content;
     private Date lastModifDate = new Date();
@@ -18,7 +18,7 @@ public class Document extends Entity implements Trackable {
 
     @Override
     public int getEntityCode() {
-        return this.id;
+        return DOCUMENT_ENTITY_CODE;
     }
 
     @Override
