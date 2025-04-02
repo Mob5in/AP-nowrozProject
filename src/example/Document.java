@@ -34,10 +34,12 @@ public class Document extends Entity implements Trackable {
     @Override
     public void setLastModificationDate(Date date) {
         this.lastModifDate = date;
+        this.lastModifDate = (Date) lastModifDate.clone();
     }
 
     @Override
     public Date getLastModificationDate() {
         return lastModifDate;
     }
+
 }

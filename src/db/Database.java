@@ -1,7 +1,6 @@
 package db;
 import dbexeption.*;
 import example.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,18 +13,13 @@ public class Database {
 
     public static void add(Entity e) throws InvalidEntityException {
 
-
 //        zero entity code means it has no validator
         if(e.getEntityCode()!=0){
             Validator validator = validators.get(e.getEntityCode());
             validator.validate(e);
         }
 
-
-
         e.id = entities.size() + 1;
-
-
         entities.add(e.clone());
     }
 
