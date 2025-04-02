@@ -13,7 +13,7 @@ public class Database {
 
     public static void add(Entity e) throws InvalidEntityException {
 
-//        zero entity code means it has no validator
+//        zero entity code means it has no validator like document
         if(e.getEntityCode()!=0){
             Validator validator = validators.get(e.getEntityCode());
             validator.validate(e);

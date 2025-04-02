@@ -11,7 +11,6 @@ public class Main {
         Database.add(doc);
 
         System.out.println("Document added");
-
         System.out.println("id: " + doc.id);
         System.out.println("content: " + doc.content);
         System.out.println("creation date: " + doc.getCreationDate());
@@ -38,8 +37,8 @@ public class Main {
 
 
         System.out.println("Document updated");
-        System.out.println("id: " + doc.id);
-        System.out.println("content: " + doc.content);
+        System.out.println("id: " + check.id);
+        System.out.println("content: " + check.content);
         System.out.println("creation date: " + check.getCreationDate());
         System.out.println("last modification date: " + check.getLastModificationDate());
     }
