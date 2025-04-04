@@ -44,15 +44,15 @@ public class Main {
                     addStep();
                     break;
 
-                case "delete":
-                case "3":
-                    delete();
-                    break;
-
-                case "update":
-                case "4":
-                    update();
-                    break;
+//                case "delete":
+//                case "3":
+//                    delete();
+//                    break;
+//
+//                case "update":
+//                case "4":
+//                    update();
+//                    break;
 
                 case "update step":
                 case "5":
@@ -84,6 +84,10 @@ public class Main {
                     System.out.println("Invalid command! Please try again.");
                     break;
             }
+
+
+            Task check = (Task) Database.get(1);
+            System.out.println(check.getDescription());
         }
 
     }
@@ -97,6 +101,7 @@ public class Main {
 
 
     private static void getTaskById() {
+
     }
 
 
@@ -130,6 +135,7 @@ public class Main {
             dueDate = dateFormat.parse(dateStr);
         } catch (Exception e) {
             System.out.println("Please enter date correctly(YYYY-MM-DD) ");
+            return;
         }
 
         Task newTask = new Task(title, descriprion, dueDate);
