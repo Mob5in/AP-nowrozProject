@@ -1,9 +1,8 @@
 package db;
-import dbexeption.EntityNotFoundException;
-import dbexeption.InvalidEntityException;
-import example.HumanValidator;
-
+import dbexeption.*;
+import example.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -14,8 +13,11 @@ public class Database {
 
     public static void add(Entity e) throws InvalidEntityException {
 
-        Validator validator = validators.get(e.getEntityCode());
-        validator.validate(e);
+//        zero entity code means it has no validator like document
+        if(e.getEntityCode()!=0){
+            Validator validator = validators.get(e.getEntityCode());
+            validator.validate(e);
+        }
 
         e.id = entities.size() + 1;
         entities.add(e.clone());
@@ -56,11 +58,16 @@ public class Database {
     public static void update(Entity e) throws EntityNotFoundException, InvalidEntityException {
         int i = 0;
 
-        Validator validator = validators.get(e.getEntityCode());
-        validator.validate(e);
+        if(e.getEntityCode()!=0){
+            Validator validator = validators.get(e.getEntityCode());
+            validator.validate(e);
+        }
 
         for(Entity entity: entities){
             if(entity.id == e.id){
+                if(Trackable.class.isAssignableFrom(e.getClass())){
+                    ((Trackable) e).setLastModificationDate(new Date());
+                }
                 entities.set(i, e.clone());
                 return;
             }
