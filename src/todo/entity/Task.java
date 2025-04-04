@@ -14,7 +14,7 @@ public class Task extends Entity implements Trackable {
     }
 
     static final int TASK_ENTITY_CODE = 4;
-    private String title;
+    private String title = "";
     private String description;
     private Date dueDate;
     private Status status;
@@ -57,5 +57,20 @@ public class Task extends Entity implements Trackable {
         return lastModificationDate;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
 
 }
