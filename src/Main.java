@@ -5,8 +5,8 @@ import todo.entity.Task;
 import todo.validator.StepValidator;
 import todo.validator.TaskValidator;
 
-import javax.xml.transform.Source;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -93,6 +93,14 @@ public class Main {
 
 
     private static void getAllTasks() {
+        ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
+        int numberOfTasks = 1;
+        for(Entity entity: tasks){
+            Task task = (Task) entity;
+            System.out.println(numberOfTasks +"_title: " + task.getTitle()+ "-->ID: " + task.id);
+            numberOfTasks ++;
+        }
+
     }
 
 
