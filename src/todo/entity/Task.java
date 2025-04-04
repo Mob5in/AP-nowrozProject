@@ -13,7 +13,7 @@ public class Task extends Entity implements Trackable {
         Completed
     }
 
-    static final int TASK_ENTITY_CODE = 4;
+    public static final int TASK_ENTITY_CODE = 4;
     private String title = "";
     private String description;
     private Date dueDate;
