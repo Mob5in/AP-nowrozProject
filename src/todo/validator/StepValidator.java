@@ -2,10 +2,18 @@ package todo.validator;
 import db.Entity;
 import db.Validator;
 import dbexeption.InvalidEntityException;
+import todo.entity.Step;
 
 public class StepValidator implements Validator {
+
+
     @Override
     public void validate(Entity entity) throws InvalidEntityException {
-
+        if(!(entity instanceof Step)){
+            throw new IllegalArgumentException("Entity must be Step");
+        }
+        if(((Step) entity).getTitle().isEmpty()){
+            throw new IllegalArgumentException("Title must not be empty");
+        }
     }
 }
