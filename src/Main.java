@@ -84,10 +84,6 @@ public class Main {
                     System.out.println("Invalid command! Please try again.");
                     break;
             }
-
-
-            Task check = (Task) Database.get(1);
-            System.out.println(check.getDescription());
         }
 
     }
@@ -101,7 +97,17 @@ public class Main {
 
 
     private static void getTaskById() {
+        Scanner scn = new Scanner(System.in);
 
+        System.out.println("Enter the ID you want: ");
+        int id = scn.nextInt();
+
+        Task gettedTask = (Task) Database.get(id);
+        System.out.println("Details: ");
+        System.out.println("title: "+gettedTask.getTitle());
+        System.out.println("description: "+gettedTask.getDescription());
+        System.out.println("status: "+gettedTask.getStatus());
+        System.out.println("due date: "+gettedTask.getDueDate());
     }
 
 
