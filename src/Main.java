@@ -1,6 +1,9 @@
 import db.*;
 import dbexeption.*;
+import todo.entity.Step;
 import todo.entity.Task;
+import todo.validator.StepValidator;
+import todo.validator.TaskValidator;
 
 import javax.xml.transform.Source;
 import java.text.SimpleDateFormat;
@@ -12,8 +15,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws InvalidEntityException {
 
+        // Register validator
+        Database.registerValidator(Task.TASK_ENTITY_CODE, new TaskValidator());
+        Database.registerValidator(Step.STEP_ENTITY_CODE, new StepValidator());
         Scanner scn = new Scanner(System.in);
         System.out.println("Hello and Welcome to Our To-Do list");
+
+
 
 
         while (true){
