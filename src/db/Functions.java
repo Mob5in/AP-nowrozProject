@@ -45,7 +45,6 @@ public class Functions {
     // 2
     public static void addStep() throws InvalidEntityException {
         Scanner scn = new Scanner(System.in);
-
         String title;
         int taskRef;
 
