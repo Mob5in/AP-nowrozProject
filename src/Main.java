@@ -36,15 +36,15 @@ public class Main {
                     addStep();
                     break;
 
-//                case "delete":
-//                case "3":
-//                    delete();
-//                    break;
-//
-//                case "update":
-//                case "4":
-//                    update();
-//                    break;
+                case "delete":
+                case "3":
+                    delete();
+                    break;
+
+                case "update":
+                case "4":
+                    update();
+                    break;
 
                 case "update step":
                 case "5":

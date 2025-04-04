@@ -1,4 +1,5 @@
 package db;
+import dbexeption.EntityNotFoundException;
 import dbexeption.InvalidEntityException;
 import todo.entity.Task;
 import java.text.SimpleDateFormat;
@@ -8,6 +9,8 @@ import java.util.Scanner;
 
 public class Functions {
 
+
+    // 1
     public static void add() throws InvalidEntityException {
         Scanner scn = new Scanner(System.in);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -38,8 +41,27 @@ public class Functions {
     }
 
 
-
+    // 2
     public static void addStep() {
+    }
+
+    //3
+    public static void delete(){
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("Enter the ID you want to delete");
+        int ID = scn.nextInt();
+        try {
+            Database.delete(ID);
+        }catch(EntityNotFoundException e){
+            System.out.println("The ID do not exist");
+            return;
+        }
+        System.out.println("Deleted successfully");
+    }
+
+    public static void update(){
+
     }
 
 
