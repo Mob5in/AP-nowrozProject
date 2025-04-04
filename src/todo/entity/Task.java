@@ -7,7 +7,7 @@ public class Task extends Entity implements Trackable {
 
 
 
-    enum Status {
+    public enum Status {
         NotStarted,
         InProgress,
         Completed
@@ -17,7 +17,7 @@ public class Task extends Entity implements Trackable {
     private String title = "";
     private String description;
     private Date dueDate;
-    private Status status;
+    public Status status;
     private Date creationDate;
     private Date lastModificationDate;
 
