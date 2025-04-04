@@ -88,7 +88,7 @@ public class Database {
     public static ArrayList<Entity> getAll(int entityCode) {
         ArrayList<Entity> declaredEntity = new ArrayList<>();
         for(Entity entity: entities){
-            if(entity.id == entityCode){
+            if(entity.getEntityCode() == entityCode){
                 declaredEntity.add(entity);
             }
         }
