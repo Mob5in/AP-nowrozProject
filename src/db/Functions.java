@@ -1,6 +1,7 @@
 package db;
 import dbexeption.EntityNotFoundException;
 import dbexeption.InvalidEntityException;
+import todo.entity.Step;
 import todo.entity.Task;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,7 +43,20 @@ public class Functions {
 
 
     // 2
-    public static void addStep() {
+    public static void addStep() throws InvalidEntityException {
+        Scanner scn = new Scanner(System.in);
+
+        String title;
+        int taskRef;
+
+        System.out.println("title:");
+        title = scn.next();
+        System.out.println("Task ID:");
+        taskRef = scn.nextInt();
+
+        Step newStep = new Step(title, taskRef);
+        Database.add(newStep);
+
     }
 
     //3

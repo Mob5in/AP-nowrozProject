@@ -5,7 +5,6 @@ import db.Entity;
 public class Step extends Entity {
 
 
-
     enum Status{
         NotStarted,
         Complete
@@ -21,11 +20,12 @@ public class Step extends Entity {
         return STEP_ENTITY_CODE;
     }
 
-    public Step(String title, Task task){
+    public Step(String title, int taskRef){
         this.title = title;
         this.status = Status.NotStarted;
-        this.taskRef = task.id;
+        this.taskRef = taskRef;
     }
+
     public String getTitle(){
         return title;
     }
