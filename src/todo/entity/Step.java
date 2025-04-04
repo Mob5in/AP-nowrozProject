@@ -26,4 +26,16 @@ public class Step extends Entity {
         this.status = Status.NotStarted;
         this.taskRef = task.id;
     }
+    public String getTitle(){
+        return title;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public int getTaskRef() {
+        return taskRef;
+    }
+
 }
