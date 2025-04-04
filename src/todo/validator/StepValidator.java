@@ -21,6 +21,10 @@ public class StepValidator implements Validator {
             throw new IllegalArgumentException("Title must not be empty");
         }
 
-        Database.get(((Step) entity).getTaskRef());
+        try {
+            Database.get(((Step) entity).getTaskRef());
+        }catch (EntityNotFoundException e){
+            System.out.println("Cant add step to the dataBase, ID not found.");
+        }
     }
 }
