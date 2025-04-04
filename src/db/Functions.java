@@ -1,54 +1,12 @@
 package db;
 import dbexeption.InvalidEntityException;
 import todo.entity.Task;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class Functions {
-
-    public static void getAllTasks() {
-        ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
-        int numberOfTasks = 1;
-        for(Entity entity: tasks){
-            Task task = (Task) entity;
-            System.out.println(numberOfTasks +"_title: " + task.getTitle()+ "-->ID: " + task.id);
-            numberOfTasks ++;
-        }
-    }
-
-
-    public static void getIncompleteTasks() {
-    }
-
-
-
-
-
-    public static void getTaskById() {
-        Scanner scn = new Scanner(System.in);
-
-        System.out.println("Enter the ID you want: ");
-        int id = scn.nextInt();
-
-        Task gettedTask = (Task) Database.get(id);
-        System.out.println("Details: ");
-        System.out.println("title: "+gettedTask.getTitle());
-        System.out.println("description: "+gettedTask.getDescription());
-        System.out.println("status: "+gettedTask.getStatus());
-        System.out.println("due date: "+gettedTask.getDueDate());
-    }
-
-
-    public static void updateStep() {
-    }
-
-
-    public static void addStep() {
-    }
-
 
     public static void add() throws InvalidEntityException {
         Scanner scn = new Scanner(System.in);
@@ -79,5 +37,55 @@ public class Functions {
         Database.add(newTask);
     }
 
+
+
+    public static void addStep() {
+    }
+
+
+    public static void updateStep() {
+    }
+
+
+
+    public static void getTaskById() {
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("Enter the ID you want: ");
+        int id = scn.nextInt();
+
+        Task gettedTask = (Task) Database.get(id);
+        System.out.println("Details: ");
+        System.out.println("title: "+gettedTask.getTitle());
+        System.out.println("description: "+gettedTask.getDescription());
+        System.out.println("status: "+gettedTask.getStatus());
+        System.out.println("due date: "+gettedTask.getDueDate());
+    }
+
+
+
+
+    public static void getAllTasks() {
+        ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
+        int numberOfTasks = 1;
+        for(Entity entity: tasks){
+            Task task = (Task) entity;
+            System.out.println(numberOfTasks +"_title: " + task.getTitle()+ "-->ID: " + task.id+"(Status:"+task.getStatus()+")");
+            numberOfTasks ++;
+        }
+    }
+
+
+    public static void getIncompleteTasks() {
+        ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
+        int numberOfTasks = 1;
+        for(Entity entity: tasks){
+            Task task = (Task) entity;
+            if(task.getStatus() != Task.Status.Completed){
+                System.out.println(numberOfTasks +"_title: " + task.getTitle()+ "-->ID: " + task.id);
+                numberOfTasks ++;
+            }
+        }
+    }
 
 }
