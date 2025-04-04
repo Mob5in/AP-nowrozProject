@@ -14,7 +14,7 @@ public class Step extends Entity {
     private String title;
     private Status status;
     private int taskRef;
-    static final int STEP_ENTITY_CODE = 12;
+    public static final int STEP_ENTITY_CODE = 12;
 
     @Override
     public int getEntityCode() {
