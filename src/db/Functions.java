@@ -38,7 +38,9 @@ public class Functions {
         }
 
         Task newTask = new Task(title, descriprion, dueDate);
-        Database.add(newTask);
+        int id = Database.add(newTask);
+        System.out.println("Task saved successfully.");
+        System.out.println("Task ID: "+id);
     }
 
 

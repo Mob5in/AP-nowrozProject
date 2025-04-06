@@ -11,7 +11,7 @@ public class Database {
     private static HashMap<Integer, Validator> validators = new HashMap<>();
     private static ArrayList<Entity> entities = new ArrayList<>();
 
-    public static void add(Entity e) throws InvalidEntityException {
+    public static int add(Entity e) throws InvalidEntityException {
 
 //        zero entity code means it has no validator like document
         if(e.getEntityCode()!=0){
@@ -21,6 +21,7 @@ public class Database {
 
         e.id = entities.size() + 1;
         entities.add(e.clone());
+        return e.id;
     }
 
 
