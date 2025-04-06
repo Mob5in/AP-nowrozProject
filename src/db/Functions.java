@@ -77,7 +77,33 @@ public class Functions {
         System.out.println("Deleted successfully");
     }
 
-    public static void update(){
+    public static void update() throws InvalidEntityException {
+
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("ID: ");
+        int ID = scn.nextInt();
+
+        System.out.println("Field: ");
+        String purField = scn.next();
+
+        System.out.println("New Value: ");
+        String newValue = scn.next();
+
+        Task task = (Task) Database.get(ID);
+        if(purField.equalsIgnoreCase("title")){
+            task.setTitle(newValue);
+        } else if (purField.equalsIgnoreCase("description")) {
+            task.setDescription(newValue);
+        }else if (purField.equalsIgnoreCase("status")){
+            if(newValue.equalsIgnoreCase("Completed")){
+                task.status = Task.Status.Completed;
+            } else if (newValue.equalsIgnoreCase("InProgress")) {
+                task.status = Task.Status.InProgress;
+            }
+        }
+        Database.update(task);
+
 
     }
 

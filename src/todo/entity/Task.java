@@ -73,4 +73,11 @@ public class Task extends Entity implements Trackable {
         return status;
     }
 
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
 }
