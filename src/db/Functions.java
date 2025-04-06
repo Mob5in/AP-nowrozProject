@@ -56,8 +56,10 @@ public class Functions {
         taskRef = scn.nextInt();
 
         Step newStep = new Step(title, taskRef);
-        Database.add(newStep);
-
+        int id = Database.add(newStep);
+        System.out.println("Step saved successfully");
+        System.out.println("ID: "+id);
+        System.out.println("Creation Date: "+((Step)Database.get(id)).getCreationDate());
     }
 
     //3

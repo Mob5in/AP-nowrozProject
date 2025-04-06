@@ -1,8 +1,11 @@
 package todo.entity;
 
 import db.Entity;
+import db.Trackable;
 
-public class Step extends Entity {
+import java.util.Date;
+
+public class Step extends Entity implements Trackable {
 
 
     enum Status{
@@ -38,4 +41,32 @@ public class Step extends Entity {
         return taskRef;
     }
 
+
+    private Date creationDate = new Date();
+    public String content;
+    private Date lastModifDate = new Date();
+
+
+    @Override
+    public void setCreationDate(Date date) {
+        this.creationDate = date;
+    }
+
+
+    @Override
+    public Date getCreationDate() {
+        return this.creationDate;
+    }
+
+
+    @Override
+    public void setLastModificationDate(Date date) {
+        this.lastModifDate = date;
+    }
+
+
+    @Override
+    public Date getLastModificationDate() {
+        return lastModifDate;
+    }
 }
