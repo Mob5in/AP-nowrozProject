@@ -3,6 +3,9 @@ import dbexeption.EntityNotFoundException;
 import dbexeption.InvalidEntityException;
 import todo.entity.Step;
 import todo.entity.Task;
+import todo.service.StepService;
+import todo.service.TaskService;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -130,7 +133,7 @@ public class Functions {
             step.setTaskRef(Integer.parseInt(newValue));
         }else if (purField.equalsIgnoreCase("status")){
             if(newValue.equalsIgnoreCase("Completed")){
-                step.status = Step.Status.Complete;
+                StepService.setAsCompleted(ID);
             } else{
                 System.out.println("wrong status");
             }
@@ -141,7 +144,7 @@ public class Functions {
     }
 
 
-
+    //6
     public static void getTaskById() {
         Scanner scn = new Scanner(System.in);
 
@@ -158,7 +161,7 @@ public class Functions {
 
 
 
-
+    //7
     public static void getAllTasks() {
         ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
         int numberOfTasks = 1;
@@ -169,7 +172,7 @@ public class Functions {
         }
     }
 
-
+    //8
     public static void getIncompleteTasks() {
         ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
         int numberOfTasks = 1;
