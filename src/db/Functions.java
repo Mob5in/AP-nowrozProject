@@ -88,25 +88,38 @@ public class Functions {
         System.out.println("ID: ");
         int ID = scn.nextInt();
 
+
         System.out.println("Field: ");
+        scn.nextLine();
         String purField = scn.nextLine();
 
         System.out.println("New Value: ");
         String newValue = scn.nextLine();
 
+        System.out.println(purField);
         Task task = (Task) Database.get(ID);
         if(purField.equalsIgnoreCase("title")){
             task.setTitle(newValue);
+            System.out.println("title changing...");
         } else if (purField.equalsIgnoreCase("description")) {
             task.setDescription(newValue);
+            System.out.println("description changing...");
         }else if (purField.equalsIgnoreCase("status")){
             if(newValue.equalsIgnoreCase("Completed")){
                 task.status = Task.Status.Completed;
+            System.out.println("status changing...");
             } else if (newValue.equalsIgnoreCase("InProgress")) {
                 task.status = Task.Status.InProgress;
+            System.out.println("status changing...");
             }
         }
-        Database.update(task);
+        try {
+            Database.update(task);
+            System.out.println("Updated successfully");
+        }catch (Exception e){
+            System.out.println("Something went wrong");
+        }
+
 
 
     }
