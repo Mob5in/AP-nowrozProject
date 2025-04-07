@@ -27,11 +27,11 @@ public class Functions {
 
 
         System.out.println("title:");
-        title = scn.next();
+        title = scn.nextLine();
         System.out.println("description:");
-        descriprion = scn.next();
+        descriprion = scn.nextLine();
         System.out.println("Date:");
-        dateStr = scn.next();
+        dateStr = scn.nextLine();
 
         try {
             dueDate = dateFormat.parse(dateStr);
@@ -54,7 +54,7 @@ public class Functions {
         int taskRef;
 
         System.out.println("title:");
-        title = scn.next();
+        title = scn.nextLine();
         System.out.println("Task ID:");
         taskRef = scn.nextInt();
 
@@ -89,10 +89,10 @@ public class Functions {
         int ID = scn.nextInt();
 
         System.out.println("Field: ");
-        String purField = scn.next();
+        String purField = scn.nextLine();
 
         System.out.println("New Value: ");
-        String newValue = scn.next();
+        String newValue = scn.nextLine();
 
         Task task = (Task) Database.get(ID);
         if(purField.equalsIgnoreCase("title")){
@@ -120,10 +120,10 @@ public class Functions {
         int ID = scn.nextInt();
 
         System.out.println("Field: ");
-        String purField = scn.next();
+        String purField = scn.nextLine();
 
         System.out.println("New Value: ");
-        String newValue = scn.next();
+        String newValue = scn.nextLine();
 
 
         Step step = (Step) Database.get(ID);
