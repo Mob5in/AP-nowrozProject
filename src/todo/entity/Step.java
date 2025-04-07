@@ -8,13 +8,14 @@ import java.util.Date;
 public class Step extends Entity implements Trackable {
 
 
-    enum Status{
+
+    public enum Status{
         NotStarted,
         Complete
     }
 
     private String title;
-    private Status status;
+    public Status status;
     private int taskRef;
     public static final int STEP_ENTITY_CODE = 12;
 
@@ -68,5 +69,13 @@ public class Step extends Entity implements Trackable {
     @Override
     public Date getLastModificationDate() {
         return lastModifDate;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setTaskRef(int taskRef){
+        this.taskRef = taskRef;
     }
 }

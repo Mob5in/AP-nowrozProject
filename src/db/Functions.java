@@ -62,7 +62,7 @@ public class Functions {
         System.out.println("Creation Date: "+((Step)Database.get(id)).getCreationDate());
     }
 
-    //3
+    // 3
     public static void delete(){
         Scanner scn = new Scanner(System.in);
 
@@ -77,6 +77,7 @@ public class Functions {
         System.out.println("Deleted successfully");
     }
 
+    // 4
     public static void update() throws InvalidEntityException {
 
         Scanner scn = new Scanner(System.in);
@@ -107,8 +108,36 @@ public class Functions {
 
     }
 
+    // 5
+    public static void updateStep() throws InvalidEntityException {
 
-    public static void updateStep() {
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("ID: ");
+        int ID = scn.nextInt();
+
+        System.out.println("Field: ");
+        String purField = scn.next();
+
+        System.out.println("New Value: ");
+        String newValue = scn.next();
+
+
+        Step step = (Step) Database.get(ID);
+        if(purField.equalsIgnoreCase("title")){
+            step.setTitle(newValue);
+        } else if (purField.equalsIgnoreCase("task ID")) {
+            step.setTaskRef(Integer.parseInt(newValue));
+        }else if (purField.equalsIgnoreCase("status")){
+            if(newValue.equalsIgnoreCase("Completed")){
+                step.status = Step.Status.Complete;
+            } else{
+                System.out.println("wrong status");
+            }
+        }
+
+        Database.update(step);
+
     }
 
 
