@@ -108,6 +108,17 @@ public class Functions {
             if(newValue.equalsIgnoreCase("Completed")){
                 task.status = Task.Status.Completed;
             System.out.println("status changing...");
+
+            ArrayList<Entity> entities = Database.getAll(12);
+            for (Entity entity : entities) {
+                if(((Step) entity).getTaskRef() == ID){
+                    Step step = (Step) entity;
+                    step.status = Step.Status.Complete;
+                    Database.update(step);
+                }
+            }
+
+
             } else if (newValue.equalsIgnoreCase("InProgress")) {
                 task.status = Task.Status.InProgress;
             System.out.println("status changing...");
