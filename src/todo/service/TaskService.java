@@ -129,12 +129,31 @@ public class TaskService {
 
 
     public static void getAllTasks() {
+
         ArrayList<Entity> tasks = Database.getAll(Task.TASK_ENTITY_CODE);
+        ArrayList<Entity> entities = Database.getAll(Step.STEP_ENTITY_CODE);
         int numberOfTasks = 1;
+
         for(Entity entity: tasks){
             Task task = (Task) entity;
             System.out.println(numberOfTasks +"_title: " + task.getTitle()+ "-->ID: " + task.id+"(Status:"+task.getStatus()+")");
             numberOfTasks ++;
+
+            System.out.println("Steps:");
+            int numberOfSteps=1;
+            for (Entity entity1 : entities) {
+                if(((Step) entity1).getTaskRef() == task.id){
+                    Step step = (Step) entity1;
+                    System.out.println("step " + numberOfSteps);
+                    System.out.println("title: "+step.getTitle());
+                    System.out.println("ID: "+step.id);
+                    System.out.println("Status: "+step.getStatus());
+                }
+                numberOfSteps++;
+            }
+            if(numberOfSteps==1){
+                System.out.println("No Steps");
+            }
         }
     }
 

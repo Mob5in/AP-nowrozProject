@@ -3,8 +3,6 @@ import dbexeption.*;
 import todo.entity.*;
 import todo.validator.*;
 import java.util.Scanner;
-
-import static db.Functions.*;
 import static todo.service.StepService.*;
 import static todo.service.TaskService.*;
 

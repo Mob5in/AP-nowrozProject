@@ -13,12 +13,4 @@ import java.util.Scanner;
 
 public class Functions {
 
-
-
-
-    // 2
-
-    // 3
-
-
 }
