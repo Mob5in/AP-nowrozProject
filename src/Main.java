@@ -1,45 +1,81 @@
 import db.*;
 import dbexeption.*;
-import example.*;
+import todo.entity.*;
+import todo.validator.*;
+import java.util.Scanner;
+import static todo.service.StepService.*;
+import static todo.service.TaskService.*;
 
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws InvalidEntityException {
-        Document doc = new Document("Eid Eid Eid");
 
-        Database.add(doc);
+        // Register validator
+        Database.registerValidator(Task.TASK_ENTITY_CODE, new TaskValidator());
+        Database.registerValidator(Step.STEP_ENTITY_CODE, new StepValidator());
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Hello and Welcome to Our To-Do list");
 
-        System.out.println("Document added");
-        System.out.println("id: " + doc.id);
-        System.out.println("content: " + doc.content);
-        System.out.println("creation date: " + doc.getCreationDate());
-        System.out.println("last modification date: " + doc.getLastModificationDate());
-        System.out.println();
 
-        try {
-            Thread.sleep(10_000);
-        } catch (InterruptedException e) {
-            System.out.println("Sleep interrupted!");
+        while (true){
+
+            System.out.println("Command List \n1-add task\n2-add step\n3-delete\n4-update\n5-update step\n6-get task-by-id" +
+                    "\n7-get all-tasks\n8-get incomplete-tasks\n9-exit\n" +
+                    "please only enter the number or the Command");
+
+            String command = scn.next();
+
+            switch (command.toLowerCase()) {  // Convert to lowercase for case-insensitive matching
+                case "add":
+                case "1":
+                    add();
+                    break;
+
+                case "add step":
+                case "2":
+                    addStep();
+                    break;
+
+                case "delete":
+                case "3":
+                    delete();
+                    break;
+
+                case "update":
+                case "4":
+                    update();
+                    break;
+
+                case "update step":
+                case "5":
+                    updateStep();
+                    break;
+
+                case "get task-by-id":
+                case "6":
+                    getTaskById();
+                    break;
+
+                case "get all-tasks":
+                case "7":
+                    getAllTasks();
+                    break;
+
+                case "get incomplete-tasks":
+                case "8":
+                    getIncompleteTasks();
+                    break;
+
+                case "exit":
+                case "9":
+                    System.out.println("Exiting program...");
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid command! Please try again.");
+                    break;
+            }
         }
-
-        doc.content = "This is the new content";
-
-        Database.update(doc);
-
-        try {
-            Thread.sleep(10_000);
-        } catch (InterruptedException e) {
-            System.out.println("Sleep interrupted!");
-        }
-        doc.setLastModificationDate(new Date());
-        Document check = (Document) Database.get(1);
-
-
-        System.out.println("Document updated");
-        System.out.println("id: " + check.id);
-        System.out.println("content: " + check.content);
-        System.out.println("creation date: " + check.getCreationDate());
-        System.out.println("last modification date: " + check.getLastModificationDate());
     }
 }
